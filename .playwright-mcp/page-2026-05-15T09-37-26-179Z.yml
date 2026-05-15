@@ -1,0 +1,171 @@
+- main [ref=e4]:
+  - generic [ref=e5]:
+    - generic [ref=e7]:
+      - heading "📚 幼儿教育 AI 助手" [level=1] [ref=e12]
+      - paragraph [ref=e17]: 基于育儿书籍知识库，为 3-5 岁幼儿家长提供专业建议
+      - generic [ref=e18]:
+        - generic [ref=e19]:
+          - generic [ref=e20]:
+            - button [ref=e21] [cursor=pointer]: 💬 教育问答
+            - button [ref=e22] [cursor=pointer]: 🎬 视频生成
+          - tablist [ref=e23]:
+            - tab "💬 教育问答" [selected] [ref=e24] [cursor=pointer]
+            - tab "🎬 视频生成" [ref=e25] [cursor=pointer]
+        - tabpanel [ref=e26]:
+          - generic [ref=e28]:
+            - heading "育儿知识问答" [level=1] [ref=e33]
+            - paragraph [ref=e38]: 输入你关心的育儿问题，我来基于知识库给你建议
+            - generic [ref=e40]:
+              - generic:
+                - generic:
+                  - img
+                - text: Chatbot
+              - button "清空对话" [ref=e82] [cursor=pointer]:
+                - img [ref=e84]
+              - log "chatbot conversation" [ref=e41]:
+                - generic [ref=e90]:
+                  - 'generic "user''s message: 3岁孩子晚上不肯睡觉怎么办？" [ref=e95]':
+                    - paragraph [ref=e98]: 3岁孩子晚上不肯睡觉怎么办？
+                  - generic [ref=e103]:
+                    - generic [ref=e105]:
+                      - paragraph [ref=e106]: 根据您提供的育儿书籍资料，针对3岁孩子晚上不肯睡觉的问题，以下是具体、可操作的建议（所有建议均直接引自资料内容，并已标注来源依据）：
+                      - paragraph [ref=e107]:
+                        - text: ✅
+                        - strong [ref=e108]: 1. 调整白天作息，避免傍晚小睡
+                      - blockquote [ref=e109]:
+                        - paragraph [ref=e110]:
+                          - text: “最好不让宝宝傍晚小睡。如果到了傍晚还睡上一觉，宝宝晚上通常就会睡得比较晚了。”
+                          - text: → 建议：取消下午4点以后的任何小睡；若孩子白天需两觉，安排为“上午一觉 + 午饭后一觉（13:00–15:00）”，傍晚（16:00后）保持清醒、安静活动。
+                      - paragraph [ref=e111]:
+                        - text: ✅
+                        - strong [ref=e112]: 2. 保障高质量亲子陪伴，缓解“不舍得睡”情绪
+                      - blockquote [ref=e113]:
+                        - paragraph [ref=e114]:
+                          - text: “如果父母上班，孩子一天看不到爸爸妈妈，到了晚上不舍得睡觉，希望和爸爸妈妈一起玩耍。爸爸妈妈要尽量满足孩子的愿望，多抽些时间陪孩子。如果下班后，父母总是有忙不完的事情，到了快睡觉的时候，才想起来要哄宝宝睡觉，宝宝当然不舍得睡了。”
+                          - text: → 建议：每天固定安排15–20分钟“专属陪伴时光”（如晚饭后关掉手机，一起叠衣服、看绘本、揉揉肩膀），让孩子的情感需求在睡前充分被满足，减少因依恋而拖延入睡。
+                      - paragraph [ref=e115]:
+                        - text: ✅
+                        - strong [ref=e116]: 3. 睡前流程温和降兴奋，避免刺激性活动
+                      - blockquote [ref=e117]:
+                        - paragraph [ref=e118]:
+                          - text: “睡觉前过度兴奋，引人入胜的故事情节，听妈妈讲故事的幸福感觉……都可能成为孩子不愿意睡觉的原因。”
+                          - text: → 建议：
+                      - list [ref=e119]:
+                        - listitem [ref=e120]: 晚上8:00起进入“睡眠准备程序”：调暗灯光 → 洗温水澡 → 换睡衣 → 听轻柔音乐或哼唱固定摇篮曲（非新奇故事）；
+                        - listitem [ref=e121]: 讲故事可选1本简短、重复性强、情节平静的绘本（如《小兔子睡不着》），讲2遍即可，不提问、不延伸；
+                        - listitem [ref=e122]: 避免追逐游戏、动画片、电子屏幕及激烈讨论。
+                      - paragraph [ref=e123]:
+                        - text: ✅
+                        - strong [ref=e124]: 4. 父母以身作则，温柔坚定地建立早睡节奏
+                      - blockquote [ref=e125]:
+                        - paragraph [ref=e126]:
+                          - text: “尽量让宝宝早睡早起，如果有妈妈陪着，宝宝才能早睡，妈妈就放下手中的事情，陪宝宝早些睡觉。如果妈妈确实不能像孩子一样早早睡觉，待宝宝睡着后，妈妈再悄悄起来。但需要在宝宝旁边做事……”
+                          - text: → 建议：全家统一目标——目标入睡时间不晚于20:30。妈妈/主要照顾者可在宝宝床边安静看书或做手工（不开手机），用身体语言传递“现在是安静休息的时间”。孩子感受到稳定、安全的节律，会逐渐内化为自身生物钟。
+                      - paragraph [ref=e127]:
+                        - text: ✅
+                        - strong [ref=e128]: 5. 接纳阶段性发展特点，不焦虑、不强迫
+                      - blockquote [ref=e129]:
+                        - paragraph [ref=e130]:
+                          - text: “孩子不会一直这样下去的，说不定哪一天，孩子就主动早睡了。顺其自然是最好的解决办法。”
+                          - text: → 温馨提醒：3岁孩子正处于自主意识高涨期，“不肯睡”常是表达“我想掌控自己时间”的方式。只要总睡眠时长充足（资料明确指出：“宝宝睡11个小时是正常的”），且白天精神好、情绪稳、生长发育正常，就不必过度干预。您的平和与信任，本身就是最有效的“安眠剂”。
+                      - paragraph [ref=e131]: 📌 补充说明：资料中未提及使用褪黑素、药物或严格“哭声免疫法”，也明确反对“训斥”“生气按压”“威胁式管教”等做法，强调养育的核心是“学习如何管，而不是不管”。
+                      - paragraph [ref=e132]: 如您观察到孩子连续多日入睡超23:00、晨起困难、白天易怒/频繁打盹，或伴随出汗多、打鼾、呼吸暂停等表现，建议咨询儿童保健科医生，排除生理因素——但绝大多数情况，属于典型的发展性睡眠过渡期，耐心陪伴+规律调整，2–6周内会有明显改善。
+                      - paragraph [ref=e133]: 愿您和孩子共享温柔而有力量的夜晚 🌙
+                      - separator [ref=e134]
+                      - paragraph [ref=e135]:
+                        - strong [ref=e136]: 参考来源：
+                      - list [ref=e137]:
+                        - listitem [ref=e138]: ZhengYuQiaoYuErJing_YouE.epub
+                  - 'generic "user''s message: 如何培养4岁孩子的阅读兴趣？" [ref=e166]':
+                    - paragraph [ref=e169]: 如何培养4岁孩子的阅读兴趣？
+                  - generic [ref=e185]:
+                    - generic [ref=e187]:
+                      - paragraph [ref=e188]:
+                        - text: 根据您提供的育儿书籍资料，以下是针对
+                        - strong [ref=e189]: 4岁孩子阅读兴趣培养
+                        - text: 的具体、可操作建议（全部源自资料内容，并标注出处）：
+                      - separator [ref=e190]
+                      - paragraph [ref=e191]:
+                        - text: ✅
+                        - strong [ref=e192]: 1. 从出生起坚持“分享阅读”，现在正是收获期
+                        - text: 资料明确指出：“从宝宝出生那天起，父母就跟他交流的话，其实就为宝宝打下了良好的沟通基础……如果宝宝出生时就听到父母的读书声，这不仅能提前培养他的读写能力，还能让他滋生对阅读的兴趣。”（来源：《分享阅读》）
+                        - text: 👉
+                        - strong [ref=e193]: 家长怎么做
+                        - text: ：每天固定10–15分钟，用温暖的声音为孩子朗读绘本（不必强求坐稳、翻页整齐），指着图画描述细节，模仿动物叫声或人物语气。4岁孩子已能理解情节，可边读边问开放式问题，如：“小熊接下来会怎么做呀？”——不追求答对，重在激发参与感。
+                      - paragraph [ref=e194]:
+                        - text: ✅
+                        - strong [ref=e195]: 2. 父母以身作则，营造“真实可感”的阅读环境
+                        - text: 资料强调：“倘若父母常坐书桌旁看书，孩子也会学着父母的样子，坐在书桌旁看书……当孩子学习时，她就默默地坐在孩子身边，或看书，或织毛衣。”（来源：《培养孩子的阅读能力》《模仿性学习》）
+                        - text: 👉
+                        - strong [ref=e196]: 家长怎么做
+                        - text: ：
+                      - list [ref=e197]:
+                        - listitem [ref=e198]: 晚饭后全家“安静时光”：关掉电视和手机，每人拿一本适合自己的书（哪怕只是杂志、菜谱），和孩子一起“读”；
+                        - listitem [ref=e199]: 把书放在孩子触手可及的地方（沙发边、床头、小凳上），避免只放书架顶端；
+                        - listitem [ref=e200]: 偶尔让孩子看见你查书解决问题，例如：“咦，这个植物怎么养？我们翻翻《小园丁图鉴》找答案吧！”（呼应资料中“和孩子一起查书”的方法）
+                      - paragraph [ref=e201]:
+                        - text: ✅
+                        - strong [ref=e202]: 3. 尊重孩子的阅读节奏，把“翻篇快”变成互动契机
+                        - text: 资料坦诚回应常见困扰：“我还没读完一页，女儿就想翻篇了……有效的办法是利用宝宝强烈的求知欲和对未知世界的探索精神，不断发现孩子的兴趣点，并把兴趣引向深入。”（来源：《分享阅读》《有效的办法》）
+                        - text: 👉
+                        - strong [ref=e203]: 家长怎么做
+                        - text: ：
+                      - list [ref=e204]:
+                        - listitem [ref=e205]: 若孩子抢翻页，顺势说：“哇！你发现蝴蝶啦？它翅膀上有几个圆点？我们倒回去数一数！”——将“打断”转化为观察与表达；
+                        - listitem [ref=e206]: 选有重复句式、韵律感强的绘本（如《小兔彼得》《小黑鱼》），4岁孩子爱跟读、爱预测下一句，自然产生掌控感和成就感。
+                      - paragraph [ref=e207]:
+                        - text: ✅
+                        - strong [ref=e208]: 4. 让书和“玩”自然融合，拒绝“为读而读”
+                        - text: 资料特别提醒：“要让宝宝在玩耍中了解自然，认识世界……让宝宝喜欢书，但不能让宝宝成为书虫，成为只是看书不去思考、只学习已知不探索未知的孩子。”（来源：《让宝宝去玩》）
+                        - text: 👉
+                        - strong [ref=e209]: 家长怎么做
+                        - text: ：
+                      - list [ref=e210]:
+                        - listitem [ref=e211]: 读完《小种子》后，一起种豆子，每天画生长日记；
+                        - listitem [ref=e212]: 读完《野兽国》，用靠垫搭“野兽洞”，轮流扮演角色讲故事；
+                        - listitem [ref=e213]: 带孩子去图书馆“寻宝”：按颜色/动物/车轮数量找3本书——把阅读变成一场快乐探索。
+                      - paragraph [ref=e214]:
+                        - text: ✅
+                        - strong [ref=e215]: 5. 慎用评价，多用具体肯定，保护内在动力
+                        - text: 资料警示：“父母总是自觉不自觉地给孩子下结论……这会极大挫伤宝宝自尊心，会遏制宝宝思维和求知欲望。”（来源：《下结论应该慎重》《培养孩子的读书习惯》）
+                        - text: 👉
+                        - strong [ref=e216]: 家长怎么做
+                        - text: ：
+                        - text: ❌ 避免说：“你真聪明，一下就记住了！”
+                        - text: ✅ 改为说：“我注意到你刚才一直盯着瓢虫的脚看，还用手指着数——你观察得真仔细！”（聚焦行为）
+                        - text: ✅ 或：“这本书你主动拿过来读了两次，说明你很喜欢这只小恐龙！”（描述事实+赋予意义）
+                      - separator [ref=e217]
+                      - paragraph [ref=e218]: ✨ 温馨提示：4岁是“一遍遍学、乐此不疲”的黄金期（资料：《一遍遍地学》）。他可能今天反复读同一本《小熊宝宝》十遍，明天突然迷上恐龙图鉴——这恰恰是兴趣萌芽的健康信号，请耐心陪伴，静待花开。
+                      - paragraph [ref=e219]: 当前知识库中未找到关于“电子阅读器使用”“识字教学法”或“特殊需求儿童阅读支持”的具体内容，如您有相关疑问，我很乐意基于发展心理学与早期教育原则为您提供补充建议。
+                      - separator [ref=e220]
+                      - paragraph [ref=e221]:
+                        - strong [ref=e222]: 参考来源：
+                      - list [ref=e223]:
+                        - listitem [ref=e224]: ZhengYuQiaoYuErJing_YouE.epub
+                        - listitem [ref=e225]: 父母的语言.epub
+                  - generic [ref=e227]:
+                    - button "重试" [ref=e228] [cursor=pointer]:
+                      - img [ref=e230]
+                    - button "撤销" [ref=e235] [cursor=pointer]:
+                      - img "undo" [ref=e237]
+              - button "Scroll down" [ref=e241] [cursor=pointer]:
+                - img [ref=e243]
+            - generic [ref=e65]:
+              - textbox [active] [ref=e66]
+              - button [ref=e245] [cursor=pointer]:
+                - img [ref=e246]
+    - generic [ref=e71]:
+      - button "通过 API 使用 标志" [ref=e72] [cursor=pointer]:
+        - text: 通过 API 使用
+        - img "标志" [ref=e73]
+      - generic [ref=e74]: ·
+      - link "使用 Gradio 构建 标志" [ref=e75] [cursor=pointer]:
+        - /url: https://gradio.app
+        - text: 使用 Gradio 构建
+        - img "标志" [ref=e76]
+      - generic [ref=e77]: ·
+      - button "设置 设置" [ref=e78] [cursor=pointer]:
+        - text: 设置
+        - img "设置" [ref=e79]
+      - iframe [ref=e80]:
+        

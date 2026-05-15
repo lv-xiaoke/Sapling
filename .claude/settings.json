@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C \"d:/my_develop/A_work_program/Sapling\" init)"
+    ]
+  }
+}

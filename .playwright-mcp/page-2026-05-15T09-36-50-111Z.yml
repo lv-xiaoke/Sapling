@@ -1,0 +1,104 @@
+- main [ref=e4]:
+  - generic [ref=e5]:
+    - generic [ref=e7]:
+      - heading "📚 幼儿教育 AI 助手" [level=1] [ref=e12]
+      - paragraph [ref=e17]: 基于育儿书籍知识库，为 3-5 岁幼儿家长提供专业建议
+      - generic [ref=e18]:
+        - generic [ref=e19]:
+          - generic [ref=e20]:
+            - button [ref=e21] [cursor=pointer]: 💬 教育问答
+            - button [ref=e22] [cursor=pointer]: 🎬 视频生成
+          - tablist [ref=e23]:
+            - tab "💬 教育问答" [selected] [ref=e24] [cursor=pointer]
+            - tab "🎬 视频生成" [ref=e25] [cursor=pointer]
+        - tabpanel [ref=e26]:
+          - generic [ref=e28]:
+            - heading "育儿知识问答" [level=1] [ref=e33]
+            - paragraph [ref=e38]: 输入你关心的育儿问题，我来基于知识库给你建议
+            - generic [ref=e39]:
+              - generic:
+                - generic: processing | 7.0s
+              - generic [ref=e40]:
+                - generic:
+                  - generic:
+                    - img
+                  - text: Chatbot
+                - button "清空对话" [ref=e82] [cursor=pointer]:
+                  - img [ref=e84]
+                - log "chatbot conversation" [ref=e41]:
+                  - generic [ref=e90]:
+                    - 'generic "user''s message: 3岁孩子晚上不肯睡觉怎么办？" [ref=e95]':
+                      - paragraph [ref=e98]: 3岁孩子晚上不肯睡觉怎么办？
+                    - generic [ref=e103]:
+                      - generic [ref=e105]:
+                        - paragraph [ref=e106]: 根据您提供的育儿书籍资料，针对3岁孩子晚上不肯睡觉的问题，以下是具体、可操作的建议（所有建议均直接引自资料内容，并已标注来源依据）：
+                        - paragraph [ref=e107]:
+                          - text: ✅
+                          - strong [ref=e108]: 1. 调整白天作息，避免傍晚小睡
+                        - blockquote [ref=e109]:
+                          - paragraph [ref=e110]:
+                            - text: “最好不让宝宝傍晚小睡。如果到了傍晚还睡上一觉，宝宝晚上通常就会睡得比较晚了。”
+                            - text: → 建议：取消下午4点以后的任何小睡；若孩子白天需两觉，安排为“上午一觉 + 午饭后一觉（13:00–15:00）”，傍晚（16:00后）保持清醒、安静活动。
+                        - paragraph [ref=e111]:
+                          - text: ✅
+                          - strong [ref=e112]: 2. 保障高质量亲子陪伴，缓解“不舍得睡”情绪
+                        - blockquote [ref=e113]:
+                          - paragraph [ref=e114]:
+                            - text: “如果父母上班，孩子一天看不到爸爸妈妈，到了晚上不舍得睡觉，希望和爸爸妈妈一起玩耍。爸爸妈妈要尽量满足孩子的愿望，多抽些时间陪孩子。如果下班后，父母总是有忙不完的事情，到了快睡觉的时候，才想起来要哄宝宝睡觉，宝宝当然不舍得睡了。”
+                            - text: → 建议：每天固定安排15–20分钟“专属陪伴时光”（如晚饭后关掉手机，一起叠衣服、看绘本、揉揉肩膀），让孩子的情感需求在睡前充分被满足，减少因依恋而拖延入睡。
+                        - paragraph [ref=e115]:
+                          - text: ✅
+                          - strong [ref=e116]: 3. 睡前流程温和降兴奋，避免刺激性活动
+                        - blockquote [ref=e117]:
+                          - paragraph [ref=e118]:
+                            - text: “睡觉前过度兴奋，引人入胜的故事情节，听妈妈讲故事的幸福感觉……都可能成为孩子不愿意睡觉的原因。”
+                            - text: → 建议：
+                        - list [ref=e119]:
+                          - listitem [ref=e120]: 晚上8:00起进入“睡眠准备程序”：调暗灯光 → 洗温水澡 → 换睡衣 → 听轻柔音乐或哼唱固定摇篮曲（非新奇故事）；
+                          - listitem [ref=e121]: 讲故事可选1本简短、重复性强、情节平静的绘本（如《小兔子睡不着》），讲2遍即可，不提问、不延伸；
+                          - listitem [ref=e122]: 避免追逐游戏、动画片、电子屏幕及激烈讨论。
+                        - paragraph [ref=e123]:
+                          - text: ✅
+                          - strong [ref=e124]: 4. 父母以身作则，温柔坚定地建立早睡节奏
+                        - blockquote [ref=e125]:
+                          - paragraph [ref=e126]:
+                            - text: “尽量让宝宝早睡早起，如果有妈妈陪着，宝宝才能早睡，妈妈就放下手中的事情，陪宝宝早些睡觉。如果妈妈确实不能像孩子一样早早睡觉，待宝宝睡着后，妈妈再悄悄起来。但需要在宝宝旁边做事……”
+                            - text: → 建议：全家统一目标——目标入睡时间不晚于20:30。妈妈/主要照顾者可在宝宝床边安静看书或做手工（不开手机），用身体语言传递“现在是安静休息的时间”。孩子感受到稳定、安全的节律，会逐渐内化为自身生物钟。
+                        - paragraph [ref=e127]:
+                          - text: ✅
+                          - strong [ref=e128]: 5. 接纳阶段性发展特点，不焦虑、不强迫
+                        - blockquote [ref=e129]:
+                          - paragraph [ref=e130]:
+                            - text: “孩子不会一直这样下去的，说不定哪一天，孩子就主动早睡了。顺其自然是最好的解决办法。”
+                            - text: → 温馨提醒：3岁孩子正处于自主意识高涨期，“不肯睡”常是表达“我想掌控自己时间”的方式。只要总睡眠时长充足（资料明确指出：“宝宝睡11个小时是正常的”），且白天精神好、情绪稳、生长发育正常，就不必过度干预。您的平和与信任，本身就是最有效的“安眠剂”。
+                        - paragraph [ref=e131]: 📌 补充说明：资料中未提及使用褪黑素、药物或严格“哭声免疫法”，也明确反对“训斥”“生气按压”“威胁式管教”等做法，强调养育的核心是“学习如何管，而不是不管”。
+                        - paragraph [ref=e132]: 如您观察到孩子连续多日入睡超23:00、晨起困难、白天易怒/频繁打盹，或伴随出汗多、打鼾、呼吸暂停等表现，建议咨询儿童保健科医生，排除生理因素——但绝大多数情况，属于典型的发展性睡眠过渡期，耐心陪伴+规律调整，2–6周内会有明显改善。
+                        - paragraph [ref=e133]: 愿您和孩子共享温柔而有力量的夜晚 🌙
+                        - separator [ref=e134]
+                        - paragraph [ref=e135]:
+                          - strong [ref=e136]: 参考来源：
+                        - list [ref=e137]:
+                          - listitem [ref=e138]: ZhengYuQiaoYuErJing_YouE.epub
+                    - 'generic "user''s message: 如何培养4岁孩子的阅读兴趣？" [ref=e166]':
+                      - paragraph [ref=e169]: 如何培养4岁孩子的阅读兴趣？
+                    - status "Loading response" [ref=e171]:
+                      - generic [ref=e173]: Loading content
+            - generic [ref=e65]:
+              - textbox [disabled] [ref=e66]
+              - button [ref=e178] [cursor=pointer]:
+                - img [ref=e179]
+    - generic [ref=e71]:
+      - button "通过 API 使用 标志" [ref=e72] [cursor=pointer]:
+        - text: 通过 API 使用
+        - img "标志" [ref=e73]
+      - generic [ref=e74]: ·
+      - link "使用 Gradio 构建 标志" [ref=e75] [cursor=pointer]:
+        - /url: https://gradio.app
+        - text: 使用 Gradio 构建
+        - img "标志" [ref=e76]
+      - generic [ref=e77]: ·
+      - button "设置 设置" [ref=e78] [cursor=pointer]:
+        - text: 设置
+        - img "设置" [ref=e79]
+      - iframe [ref=e80]:
+        
