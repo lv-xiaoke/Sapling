@@ -91,7 +91,7 @@ def load_documents(books_dir: str | None = None):
             all_docs.extend(chunks)
             print(f"    → {len(chunks)} 个 chunk")
         except Exception as e:
-            print(f"    ✗ 加载失败: {e}")
+            print(f"    [FAIL] 加载失败: {e}")
 
     print(f"\n总计: {len(all_docs)} 个 chunk")
     return all_docs

@@ -4,3 +4,20 @@
 [     364ms] [ERROR] Manifest fetch from http://127.0.0.1:7860/manifest.json failed, code 404 @ http://127.0.0.1:7860/:0
 [     443ms] [INFO] Autofocus processing was blocked because a document already has a focused element. @ http://127.0.0.1:7860/:0
 [  197501ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_RESET @ http://127.0.0.1:7860/gradio_api/heartbeat/qwekkq8ncrm:0
+[  865610ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://127.0.0.1:7860/manifest.json:0
+[  865610ms] [ERROR] Manifest fetch from http://127.0.0.1:7860/manifest.json failed, code 404 @ http://127.0.0.1:7860/:0
+[  865756ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://127.0.0.1:7860/manifest.json:0
+[  865756ms] [ERROR] Manifest fetch from http://127.0.0.1:7860/manifest.json failed, code 404 @ http://127.0.0.1:7860/:0
+[  865756ms] [INFO] Autofocus processing was blocked because a document already has a focused element. @ http://127.0.0.1:7860/:0
+[13542524ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://127.0.0.1:7860/manifest.json:0
+[13542524ms] [ERROR] Manifest fetch from http://127.0.0.1:7860/manifest.json failed, code 404 @ http://127.0.0.1:7860/:0
+[13542658ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://127.0.0.1:7860/manifest.json:0
+[13542658ms] [ERROR] Manifest fetch from http://127.0.0.1:7860/manifest.json failed, code 404 @ http://127.0.0.1:7860/:0
+[13542684ms] [INFO] Autofocus processing was blocked because a document already has a focused element. @ http://127.0.0.1:7860/:0
+[13606226ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://127.0.0.1:7860/manifest.json:0
+[13606226ms] [ERROR] Manifest fetch from http://127.0.0.1:7860/manifest.json failed, code 404 @ http://127.0.0.1:7860/:0
+[13606262ms] [INFO] Autofocus processing was blocked because a document already has a focused element. @ http://127.0.0.1:7860/:0
+[13798560ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://127.0.0.1:7860/manifest.json:0
+[13798560ms] [ERROR] Manifest fetch from http://127.0.0.1:7860/manifest.json failed, code 404 @ http://127.0.0.1:7860/:0
+[13798592ms] [INFO] Autofocus processing was blocked because a document already has a focused element. @ http://127.0.0.1:7860/:0
+[13806538ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://127.0.0.1:7860/gradio_api/mcp/sse:0

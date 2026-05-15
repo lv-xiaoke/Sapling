@@ -1,7 +1,21 @@
 {
   "permissions": {
     "allow": [
-      "Bash(git -C \"d:/my_develop/A_work_program/Sapling\" init)"
+      "Bash(git -C \"d:/my_develop/A_work_program/Sapling\" init)",
+      "mcp__plugin_context7_context7__resolve-library-id",
+      "mcp__plugin_context7_context7__query-docs",
+      "Bash(python -c \"import app; print\\('Import OK'\\)\")",
+      "Bash(python -c \"from src.video.script import generate_script; from src.video.image_gen import generate_scene_images; from src.video.tts import generate_narration_audio; from src.video.compose import compose_video; print\\('All video modules OK'\\)\")",
+      "Bash(taskkill /PID 69280 /F)",
+      "mcp__plugin_playwright_playwright__browser_take_screenshot",
+      "mcp__plugin_playwright_playwright__browser_run_code_unsafe",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:7862)",
+      "mcp__plugin_playwright_playwright__browser_close",
+      "mcp__plugin_playwright_playwright__browser_fill_form",
+      "Bash(winget install *)",
+      "Bash(taskkill /F /IM python.exe /FI \"WINDOWTITLE eq *gradio*\")",
+      "Bash(awk '{print $5}')",
+      "Bash(xargs -I{} taskkill /F /PID {})"
     ]
   }
 }

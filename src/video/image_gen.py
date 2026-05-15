@@ -3,9 +3,12 @@
 import os
 import time
 import requests
+import dashscope
 from dashscope import ImageSynthesis
 
 from src.shared.config import DASHSCOPE_API_KEY, IMAGE_MODEL, IMAGE_SIZE
+
+dashscope.api_key = DASHSCOPE_API_KEY
 
 
 def generate_scene_images(scenes: list[dict], output_dir: str) -> list[str]:
@@ -32,10 +35,10 @@ def generate_scene_images(scenes: list[dict], output_dir: str) -> list[str]:
         success = _generate_single(prompt, save_path)
         if success:
             image_paths.append(save_path)
-            print(f"  ✓ 已保存: scene_{i}.png")
+            print(f"  [OK] 已保存: scene_{i}.png")
         else:
             # 失败时使用纯色占位图
-            print(f"  ✗ 生成失败，使用占位图")
+            print(f"  [FAIL] 生成失败，使用占位图")
             _create_placeholder(save_path, text=scene.get("narration", "")[:20])
             image_paths.append(save_path)
 
@@ -56,9 +59,9 @@ def _generate_single(prompt: str, save_path: str, max_retries: int = 3) -> bool:
             response = ImageSynthesis.call(
                 model=IMAGE_MODEL,
                 prompt=prompt,
+                negative_prompt="blurry, low quality, distorted, ugly, dark, scary",
                 n=1,
                 size=IMAGE_SIZE,
-                api_key=DASHSCOPE_API_KEY,
             )
 
             if response.status_code == 200 and response.output:

@@ -1,0 +1,55 @@
+- main [ref=e4]:
+  - generic [ref=e5]:
+    - generic [ref=e7]:
+      - heading "📚 幼儿教育 AI 助手" [level=1] [ref=e12]
+      - paragraph [ref=e17]: 基于育儿书籍知识库，为 3-5 岁幼儿家长提供专业建议
+      - generic [ref=e18]:
+        - generic [ref=e19]:
+          - generic [ref=e20]:
+            - button [ref=e21] [cursor=pointer]: 💬 教育问答
+            - button [ref=e22] [cursor=pointer]: 🎬 视频生成
+          - tablist [ref=e23]:
+            - tab "💬 教育问答" [selected] [ref=e24] [cursor=pointer]
+            - tab "🎬 视频生成" [ref=e25] [cursor=pointer]
+        - tabpanel [ref=e26]:
+          - generic [ref=e28]:
+            - heading "育儿知识问答" [level=1] [ref=e33]
+            - paragraph [ref=e38]: 输入你关心的育儿问题，我来基于知识库给你建议
+            - generic [ref=e40]:
+              - generic:
+                - generic:
+                  - img
+                - text: Chatbot
+              - log "chatbot conversation" [ref=e41]:
+                - complementary [ref=e42]:
+                  - list [ref=e43]:
+                    - 'button "Select example 1: 3岁孩子晚上不肯睡觉怎么办？" [ref=e44] [cursor=pointer]':
+                      - generic [ref=e46]: 3岁孩子晚上不肯睡觉怎么办？
+                    - 'button "Select example 2: 如何培养4岁孩子的阅读兴趣？" [ref=e47] [cursor=pointer]':
+                      - generic [ref=e49]: 如何培养4岁孩子的阅读兴趣？
+                    - 'button "Select example 3: 孩子发脾气时家长应该怎么应对？" [ref=e50] [cursor=pointer]':
+                      - generic [ref=e52]: 孩子发脾气时家长应该怎么应对？
+                    - 'button "Select example 4: 3-5岁孩子每天需要多长时间的户外活动？" [ref=e53] [cursor=pointer]':
+                      - generic [ref=e55]: 3-5岁孩子每天需要多长时间的户外活动？
+                    - 'button "Select example 5: 如何帮助孩子建立良好的饮食习惯？" [ref=e56] [cursor=pointer]':
+                      - generic [ref=e58]: 如何帮助孩子建立良好的饮食习惯？
+            - generic [ref=e65]:
+              - textbox [active] [ref=e66]:
+                - /placeholder: Type a message...
+              - button [ref=e67] [cursor=pointer]:
+                - img [ref=e68]
+    - generic [ref=e71]:
+      - button "通过 API 使用 标志" [ref=e72] [cursor=pointer]:
+        - text: 通过 API 使用
+        - img "标志" [ref=e73]
+      - generic [ref=e74]: ·
+      - link "使用 Gradio 构建 标志" [ref=e75] [cursor=pointer]:
+        - /url: https://gradio.app
+        - text: 使用 Gradio 构建
+        - img "标志" [ref=e76]
+      - generic [ref=e77]: ·
+      - button "设置 设置" [ref=e78] [cursor=pointer]:
+        - text: 设置
+        - img "设置" [ref=e79]
+      - iframe [ref=e80]:
+        

@@ -1,0 +1,75 @@
+- main [ref=e4]:
+  - generic [ref=e5]:
+    - generic [ref=e7]:
+      - heading "📚 幼儿教育 AI 助手" [level=1] [ref=e12]
+      - paragraph [ref=e17]: 基于育儿书籍知识库，为 3-5 岁幼儿家长提供专业建议
+      - generic [ref=e18]:
+        - generic [ref=e19]:
+          - generic [ref=e20]:
+            - button [ref=e21] [cursor=pointer]: 💬 教育问答
+            - button [ref=e22] [cursor=pointer]: 🎬 视频生成
+          - tablist [ref=e23]:
+            - tab "💬 教育问答" [ref=e24] [cursor=pointer]
+            - tab "🎬 视频生成" [selected] [ref=e25] [cursor=pointer]
+        - tabpanel [ref=e81]:
+          - generic [ref=e82]:
+            - heading "🎬 儿童故事视频生成" [level=2] [ref=e87]
+            - paragraph [ref=e92]: 输入孩子信息，AI 自动生成个性化故事视频
+            - generic [ref=e94]:
+              - generic [ref=e96]:
+                - generic [ref=e97]: 孩子名字
+                - textbox "孩子名字" [ref=e99]:
+                  - /placeholder: 如：小明
+                  - text: 满满
+              - generic [ref=e101]:
+                - generic [ref=e102]: 年龄
+                - generic [ref=e105]:
+                  - listbox "年龄" [ref=e106]: "4"
+                  - generic:
+                    - img
+            - generic [ref=e108]:
+              - generic [ref=e110]:
+                - generic [ref=e111]: 故事主题
+                - textbox "故事主题" [ref=e113]:
+                  - /placeholder: 如：勇敢的小兔子、学会分享
+                  - text: 勇敢的小兔子学会了分享
+              - generic [ref=e115]:
+                - generic [ref=e116]: 教育目标
+                - textbox "教育目标" [ref=e118]:
+                  - /placeholder: 如：培养分享意识、认识颜色和数字
+                  - text: 培养分享意识，认识颜色和数字
+            - generic [ref=e119]:
+              - button "📝 生成故事脚本" [ref=e120] [cursor=pointer]
+              - button "确认并生成视频" [active] [ref=e126] [cursor=pointer]
+            - generic [ref=e124]:
+              - heading "🎉 视频生成完成！" [level=3] [ref=e140]
+              - paragraph [ref=e141]:
+                - strong [ref=e142]: 「满满和彩虹胡萝卜」
+              - paragraph [ref=e143]: 点击下方播放或下载
+            - generic [ref=e144]:
+              - generic:
+                - generic:
+                  - img
+                - text: 故事视频
+              - generic [ref=e149]:
+                - button "play-pause-replay-button" [ref=e150] [cursor=pointer]:
+                  - img [ref=e151]
+                - generic [ref=e153]: 0:00 / 0:35
+                - progressbar [ref=e154]
+                - button "full-screen" [ref=e155] [cursor=pointer]:
+                  - img [ref=e156]
+    - generic [ref=e71]:
+      - button "通过 API 使用 标志" [ref=e72] [cursor=pointer]:
+        - text: 通过 API 使用
+        - img "标志" [ref=e73]
+      - generic [ref=e74]: ·
+      - link "使用 Gradio 构建 标志" [ref=e75] [cursor=pointer]:
+        - /url: https://gradio.app
+        - text: 使用 Gradio 构建
+        - img "标志" [ref=e76]
+      - generic [ref=e77]: ·
+      - button "设置 设置" [ref=e78] [cursor=pointer]:
+        - text: 设置
+        - img "设置" [ref=e79]
+      - iframe [ref=e80]:
+        

@@ -1,0 +1,20 @@
+- main [ref=e4]:
+  - generic:
+    - generic:
+      - img
+    - paragraph: 加载中...
+  - generic [ref=e7]:
+    - button "通过 API 使用 标志" [ref=e8] [cursor=pointer]:
+      - text: 通过 API 使用
+      - img "标志" [ref=e9]
+    - generic [ref=e10]: ·
+    - link "使用 Gradio 构建 标志" [ref=e11] [cursor=pointer]:
+      - /url: https://gradio.app
+      - text: 使用 Gradio 构建
+      - img "标志" [ref=e12]
+    - generic [ref=e13]: ·
+    - button "设置 设置" [ref=e14] [cursor=pointer]:
+      - text: 设置
+      - img "设置" [ref=e15]
+    - iframe [ref=e16]:
+      
