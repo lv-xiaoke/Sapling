@@ -1,3 +1,9 @@
 [     608ms] [INFO] Autofocus processing was blocked because a document already has a focused element. @ http://localhost:7862/:0
 [     682ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:7862/manifest.json:0
 [     682ms] [ERROR] Manifest fetch from http://localhost:7862/manifest.json failed, code 404 @ http://localhost:7862/:0
+[  470819ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ http://localhost:7862/gradio_api/file=C:/Temp/gradio/8c9b9a25e7d9643eae7c5d8dddac87b5fbb4a32c3a8ac3024d961cc1d76b524a/story.mp4:0
+[  470821ms] The play() request was interrupted by a call to pause(). https://goo.gl/LdLk22
+[  470821ms] The play() request was interrupted by a call to pause(). https://goo.gl/LdLk22
+[  479838ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:7862/manifest.json:0
+[  479838ms] [ERROR] Manifest fetch from http://localhost:7862/manifest.json failed, code 404 @ http://localhost:7862/:0
+[  480039ms] [INFO] Autofocus processing was blocked because a document already has a focused element. @ http://localhost:7862/:0

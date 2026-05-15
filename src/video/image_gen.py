@@ -50,10 +50,7 @@ def generate_scene_images(scenes: list[dict], output_dir: str) -> list[str]:
 
 
 def _generate_single(prompt: str, save_path: str, max_retries: int = 3) -> bool:
-    """单张图片生成，含重试。
-
-    通义万相通过 DashScope API 调用，返回图片 URL 后下载到本地。
-    """
+    """单张图片生成，含重试。通义万相通过 DashScope API 异步调用。"""
     for attempt in range(max_retries):
         try:
             response = ImageSynthesis.call(
@@ -64,13 +61,35 @@ def _generate_single(prompt: str, save_path: str, max_retries: int = 3) -> bool:
                 size=IMAGE_SIZE,
             )
 
-            if response.status_code == 200 and response.output:
-                img_url = response.output.results[0].url
-                _download_image(img_url, save_path)
-                return True
+            if response.status_code != 200:
+                print(f"  API 请求失败 (尝试 {attempt+1}): "
+                      f"status={response.status_code}")
+                if attempt < max_retries - 1:
+                    time.sleep(2 ** attempt)
+                continue
 
-            print(f"  API 返回错误 (尝试 {attempt+1}): "
-                  f"status={response.status_code}, msg={getattr(response, 'message', 'unknown')}")
+            task_id = response.output.task_id
+            if not task_id:
+                print(f"  API 未返回 task_id (尝试 {attempt+1})")
+                if attempt < max_retries - 1:
+                    time.sleep(2 ** attempt)
+                continue
+
+            # 等待异步任务完成
+            completed = ImageSynthesis.wait(task_id)
+
+            if completed.output.task_status == "SUCCEEDED":
+                results = completed.output.results
+                if results:
+                    img_url = results[0].url
+                    _download_image(img_url, save_path)
+                    return True
+                else:
+                    print(f"  任务成功但无结果 (尝试 {attempt+1})")
+            else:
+                print(f"  任务失败 (尝试 {attempt+1}): "
+                      f"task_status={completed.output.task_status}, "
+                      f"msg={getattr(completed.output, 'message', 'unknown')}")
 
         except Exception as e:
             print(f"  异常 (尝试 {attempt+1}): {e}")
