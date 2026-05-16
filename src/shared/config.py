@@ -6,7 +6,7 @@ load_dotenv()
 DASHSCOPE_API_KEY = os.getenv("DASHSCOPE_API_KEY", "")
 
 LLM_MODEL = "qwen-plus"
-EMBEDDING_MODEL = "text-embedding-v4"
+EMBEDDING_MODEL = "text-embedding-v2"
 
 CHUNK_SIZE = 500
 CHUNK_OVERLAP = 200
