@@ -68,9 +68,11 @@ def _free_port(port: int) -> None:
 
 
 from src.rag.loader import load_documents
-from src.rag.embedder import get_or_create_index
+from src.rag.embedder import get_or_create_index, load_index
 from src.rag.qa import create_qa_chain, ask
-from src.shared.config import VIDEO_OUTPUT_DIR
+from src.shared.config import VIDEO_OUTPUT_DIR, OUTPUT_DIR
+from src.video.topic_extractor import extract_topics
+from src.video.knowledge_script import generate_knowledge_script, format_script_for_display
 
 qa_chain = None
 
@@ -102,29 +104,73 @@ def qa_handler(question, history):
 def _get_vectorstore():
     """获取 vectorstore（不重建，失败返回 None）。"""
     try:
-        from src.rag.embedder import load_index
         return load_index()
     except Exception:
         return None
 
 
-def handle_generate_script(child_name, age, theme, goal):
-    """Step 1: 生成故事脚本，返回预览文本和 JSON 状态。"""
+def _load_video_topics():
+    """加载视频主题列表（优先从缓存，否则从知识库提取）。"""
+    cache_path = os.path.join(OUTPUT_DIR, "video_topics.json")
+    vs = _get_vectorstore()
+    if vs is None:
+        from src.video.topic_extractor import _default_topics
+        return _default_topics()
+    return extract_topics(vs, cache_path=cache_path)
+
+
+def handle_refresh_topics():
+    """强制从知识库重新提取主题。"""
+    cache_path = os.path.join(OUTPUT_DIR, "video_topics.json")
+    if os.path.exists(cache_path):
+        os.remove(cache_path)
+    topics = _load_video_topics()
+    choices = [f"{t['category']}｜{t['title']} — {t['summary']}" for t in topics]
+    return gr.update(choices=choices, value=choices[0] if choices else None)
+
+
+def _list_existing_videos():
+    """扫描输出目录，返回已有视频列表 [(label, path), ...]（最新在前）。"""
+    videos = []
+    if not os.path.isdir(VIDEO_OUTPUT_DIR):
+        return videos
+    for name in sorted(os.listdir(VIDEO_OUTPUT_DIR), reverse=True):
+        dir_path = os.path.join(VIDEO_OUTPUT_DIR, name)
+        story_path = os.path.join(dir_path, "story.mp4")
+        if os.path.isfile(story_path):
+            # 从目录名解析：名字_YYYYMMDD_HHMMSS
+            label = name.replace("_", " ").replace("  ", " ")
+            videos.append((label, story_path))
+    return videos
+
+
+def handle_generate_script(child_name, age, topic_selection, topics_data):
+    """Step 1: 根据选中的知识主题生成讲解脚本。"""
     if not child_name.strip():
         return "### 请输入孩子名字", gr.update(visible=False), None, gr.update(visible=True)
 
-    from src.video.script import generate_script, _format_script_for_display
+    if not topic_selection or not topics_data:
+        return "### 请先选择一个视频主题", gr.update(visible=False), None, gr.update(visible=True)
+
+    # 从下拉框选择中匹配原始 topic dict
+    topic = None
+    for t in topics_data:
+        label = f"{t['category']}｜{t['title']} — {t['summary']}"
+        if label == topic_selection:
+            topic = t
+            break
+    if topic is None:
+        return "### 未找到选中的主题，请刷新重试", gr.update(visible=False), None, gr.update(visible=True)
 
     try:
         vs = _get_vectorstore()
-        script = generate_script(
+        script = generate_knowledge_script(
+            topic=topic,
             child_name=child_name.strip(),
             age=int(age),
-            theme=theme.strip(),
-            educational_goal=goal.strip(),
             vectorstore=vs,
         )
-        preview = _format_script_for_display(script)
+        preview = format_script_for_display(script)
         scene_count = len(script["scenes"])
         return (
             f"### [OK] 脚本生成完成（{scene_count} 个场景）\n\n{preview}",
@@ -191,30 +237,40 @@ def handle_generate_video(script_data, child_name, progress=gr.Progress()):
 
 
 def build_video_tab():
-    """构建视频生成 Tab 的 UI 组件。"""
-    gr.Markdown("## 🎬 儿童故事视频生成")
-    gr.Markdown("输入孩子信息，AI 自动生成个性化故事视频")
+    """构建视频生成 Tab — 基于知识库主题自动生成讲解视频。"""
+    gr.Markdown("## 🎬 知识讲解视频生成")
+    gr.Markdown("从育儿知识库中自动提取话题，AI 生成小朋友能理解的讲解视频")
+
+    # 启动时加载主题
+    topics = _load_video_topics()
+    topic_choices = [f"{t['category']}｜{t['title']} — {t['summary']}" for t in topics]
 
     with gr.Row():
         child_name = gr.Textbox(label="孩子名字", placeholder="如：小明", scale=2)
         age = gr.Dropdown(label="年龄", choices=["3", "4", "5"], value="4", scale=1)
 
     with gr.Row():
-        theme = gr.Textbox(label="故事主题", placeholder="如：勇敢的小兔子、学会分享", scale=1)
-        goal = gr.Textbox(label="教育目标", placeholder="如：培养分享意识、认识颜色和数字", scale=1)
+        topic_dropdown = gr.Dropdown(
+            label="视频主题（从知识库自动提取）",
+            choices=topic_choices,
+            value=topic_choices[0] if topic_choices else None,
+            scale=3,
+        )
+        refresh_btn = gr.Button("🔄 刷新主题", scale=1)
 
     with gr.Row():
-        gen_script_btn = gr.Button("📝 生成故事脚本", variant="primary")
+        gen_script_btn = gr.Button("📝 生成讲解脚本", variant="primary")
         confirm_btn = gr.Button("🎥 确认并生成视频", variant="primary", visible=False)
 
-    script_output = gr.Markdown("输入信息后点击「生成故事脚本」")
-    video_output = gr.Video(visible=False, label="故事视频")
+    script_output = gr.Markdown("选择主题后点击「生成讲解脚本」")
+    video_output = gr.Video(visible=False, label="讲解视频")
 
     script_state = gr.State()
+    topics_state = gr.State(topics)
 
     gen_script_btn.click(
         fn=handle_generate_script,
-        inputs=[child_name, age, theme, goal],
+        inputs=[child_name, age, topic_dropdown, topics_state],
         outputs=[script_output, confirm_btn, script_state, gen_script_btn],
     )
 
@@ -223,6 +279,48 @@ def build_video_tab():
         inputs=[script_state, child_name],
         outputs=[script_output, video_output, gen_script_btn],
     )
+
+    refresh_btn.click(
+        fn=handle_refresh_topics,
+        inputs=[],
+        outputs=[topic_dropdown],
+    )
+
+    # ---- 已生成视频 ----
+    existing_videos = _list_existing_videos()
+    if existing_videos:
+        gr.Markdown("---")
+        gr.Markdown("## 📺 已生成的视频")
+        video_choices = [v[0] for v in existing_videos]
+        video_paths = [v[1] for v in existing_videos]
+
+        with gr.Row():
+            video_selector = gr.Dropdown(
+                label="选择视频",
+                choices=video_choices,
+                value=video_choices[0],
+                scale=3,
+            )
+            play_btn = gr.Button("▶ 播放", variant="primary", scale=1)
+
+        gallery_video = gr.Video(
+            value=video_paths[0],
+            visible=True,
+            label="正在播放",
+            autoplay=True,
+            width=360,
+            height=640,
+        )
+
+        def switch_video(selected_label):
+            idx = video_choices.index(selected_label) if selected_label in video_choices else 0
+            return gr.update(value=video_paths[idx], visible=True)
+
+        play_btn.click(
+            fn=switch_video,
+            inputs=[video_selector],
+            outputs=[gallery_video],
+        )
 
 
 # ---------- 主界面 ----------
