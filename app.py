@@ -4,7 +4,6 @@ import os
 import time
 import traceback
 import socket
-import subprocess
 
 os.environ["NO_PROXY"] = "localhost,127.0.0.1,0.0.0.0"
 os.environ.setdefault("PYTHONIOENCODING", "utf-8")
@@ -30,41 +29,19 @@ warnings.filterwarnings("ignore")
 import gradio as gr
 
 
-def _free_port(port: int) -> None:
-    """如果端口被占用，尝试释放它。"""
-    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-        try:
-            s.bind(("0.0.0.0", port))
-        except OSError:
-            pass
-        else:
-            return
+def _find_free_port(start: int = 7862, end: int = 7872) -> int:
+    """在范围内找一个空闲端口，必要时尝试释放被占用的端口。"""
+    for port in range(start, end + 1):
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            try:
+                s.bind(("127.0.0.1", port))
+                if port != start:
+                    print(f"[INFO] 端口 {start} 被占用，使用 {port}")
+                return port
+            except OSError:
+                continue
 
-    # 端口被占用，Windows 上杀掉占用进程
-    if sys.platform == "win32":
-        try:
-            result = subprocess.run(
-                ["netstat", "-ano"], capture_output=True, text=True
-            )
-            for line in result.stdout.splitlines():
-                if f":{port}" in line and "LISTENING" in line:
-                    pid = line.strip().split()[-1]
-                    subprocess.run(
-                        ["taskkill", "/PID", pid, "/F"],
-                        capture_output=True,
-                    )
-                    time.sleep(0.5)
-                    print(f"[INFO] 已释放端口 {port}（PID={pid}）")
-                    return
-        except Exception:
-            pass
-
-    try:
-        result = subprocess.run(
-            ["fuser", "-k", f"{port}/tcp"], capture_output=True, text=True
-        )
-    except Exception:
-        pass
+    raise OSError(f"Cannot find empty port in range: {start}-{end}")
 
 
 from src.rag.loader import load_documents
@@ -353,6 +330,7 @@ def build_ui():
 
 
 if __name__ == "__main__":
-    _free_port(7862)
+    port = _find_free_port(7862)
     demo = build_ui()
-    demo.launch(server_name="127.0.0.1", server_port=7862, share=False, show_error=True)
+    demo.launch(server_name="127.0.0.1", server_port=port, share=False, show_error=True)
+    print(f"[INFO] Gradio 运行在 http://127.0.0.1:{port}")
