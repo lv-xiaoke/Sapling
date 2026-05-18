@@ -5,6 +5,10 @@ import time
 import traceback
 import socket
 
+# ---- 访问密码（从环境变量读取，未设置则使用默认值）----
+AUTH_USERNAME = os.environ.get("SAPLING_AUTH_USER", "admin")
+AUTH_PASSWORD = os.environ.get("SAPLING_AUTH_PASS", "sapling2026")
+
 os.environ["NO_PROXY"] = "localhost,127.0.0.1,0.0.0.0"
 os.environ.setdefault("PYTHONIOENCODING", "utf-8")
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -332,5 +336,12 @@ def build_ui():
 if __name__ == "__main__":
     port = _find_free_port(7862)
     demo = build_ui()
-    demo.launch(server_name="127.0.0.1", server_port=port, share=False, show_error=True)
-    print(f"[INFO] Gradio 运行在 http://127.0.0.1:{port}")
+    demo.launch(
+        server_name="0.0.0.0",
+        server_port=port,
+        auth=(AUTH_USERNAME, AUTH_PASSWORD),
+        share=False,
+        show_error=True,
+    )
+    print(f"[INFO] Gradio 运行在 http://0.0.0.0:{port}")
+    print(f"[INFO] 访问账号: {AUTH_USERNAME} / 密码: {AUTH_PASSWORD}")

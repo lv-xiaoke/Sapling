@@ -6,6 +6,7 @@
 
 - **教育问答** — 上传育儿书籍（PDF/EPUB），构建本地知识库，用自然语言提问获取基于书籍内容的专业建议
 - **视频生成** — 从知识库自动提取教育主题，AI 生成讲解脚本 → 文生图 → 语音合成 → 视频合成，全自动产出幼儿知识讲解视频
+- **访问控制** — 内置密码保护，支持通过 Cloudflare Tunnel 部署到自定义域名，安全公开访问
 
 ## 技术架构
 
@@ -49,7 +50,15 @@ pip install -r requirements.txt
 
 ```env
 DASHSCOPE_API_KEY=your_dashscope_api_key
+SAPLING_AUTH_USER=admin
+SAPLING_AUTH_PASS=your_custom_password
 ```
+
+| 环境变量 | 默认值 | 说明 |
+|----------|--------|------|
+| `DASHSCOPE_API_KEY` | — | 阿里云百炼 API Key（必填） |
+| `SAPLING_AUTH_USER` | `admin` | Web 登录账号 |
+| `SAPLING_AUTH_PASS` | `sapling2026` | Web 登录密码 |
 
 > 需要[阿里云百炼](https://bailian.console.aliyun.com/)的 API Key，开通通义千问和通义万相服务。
 
@@ -63,12 +72,59 @@ DASHSCOPE_API_KEY=your_dashscope_api_key
 python app.py
 ```
 
-浏览器访问 `http://127.0.0.1:7862`。
+浏览器访问 `http://127.0.0.1:7862`，输入配置的账号密码登录。
+
+### 部署到公网（Cloudflare Tunnel）
+
+将应用部署到自定义域名，通过 Cloudflare 全球 CDN 安全访问：
+
+**1. 域名托管到 Cloudflare DNS**
+
+**2. 安装 cloudflared**
+
+```powershell
+winget install Cloudflare.cloudflared
+```
+
+**3. 创建隧道并绑定域名**
+
+```powershell
+cloudflared tunnel login
+cloudflared tunnel create sapling
+cloudflared tunnel route dns sapling kids.your-domain.com
+```
+
+**4. 配置隧道** (`%USERPROFILE%\.cloudflared\config.yml`)
+
+```yaml
+tunnel: sapling
+credentials-file: C:\Users\<用户名>\.cloudflared\<tunnel-uuid>.json
+ingress:
+  - hostname: kids.your-domain.com
+    service: http://localhost:7862
+  - service: http_status:404
+```
+
+**5. 启动**
+
+分别启动：
+
+```powershell
+$env:SAPLING_AUTH_USER="admin"
+$env:SAPLING_AUTH_PASS="your_password"
+python app.py
+
+# 另一个终端
+cloudflared tunnel run sapling
+```
+
+访问 `https://kids.your-domain.com` 即可，首次打开会弹出登录框。
 
 ## 项目结构
 
 ```
 app.py                       # Gradio 入口（问答 Tab + 视频 Tab）
+tunnel.cmd                   # Cloudflare Tunnel 启动脚本
 src/
   rag/                       # 教育问答子系统
     loader.py                # PDF/EPUB 加载与 chunk 切分
